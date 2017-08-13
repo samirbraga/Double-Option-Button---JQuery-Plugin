@@ -14,19 +14,23 @@ $.fn.dblOption = function(opts){
 
 		if (opts['callOnInit'] == true) {
 			if (opts['initSide'] == 'right') {
-				self[0].dblOptions.side = 'right';
-				opts['onRight']();
+				self.setSide('right');
 			} else {
+				self.setSide('left');
+			}
+		} else {
+			if (opts['initSide'] == 'left') {
 				self[0].dblOptions.side = 'left';
-				opts['onLeft']();
+			} else {
+				self[0].dblOptions.side = 'right';
 			}
 		}
 
 		self.css({
-			width: opts['width'] || '220px',
-			height: opts['height'] || '30px',
-			lineHeight: opts['height'] || '30px'
-		})
+			width: opts['width'],
+			height: opts['height'],
+			lineHeight: opts['height']
+		});
 
 		var template = [
 			'<div class="labels labels-back">',
@@ -46,12 +50,13 @@ $.fn.dblOption = function(opts){
 						'<span>RENTTALLER</span>',
 					'</div>',
 				'</div>',
-			'</div>'].join('');
+			'</div>'
+		].join('');
 
 		self.append(template);
 
-		self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px')
-		self.find('.labels-ranger').css('background', opts['bgSelector'])
+		self.find('.labels-ranger').css('background', opts['bgSelector']);
+
 		if (opts['animation'] == true) {
 			self.find('.labels-ranger').addClass('animated');
 			self.find('.labels-front').addClass('animated');
@@ -69,7 +74,6 @@ $.fn.dblOption = function(opts){
 			e.preventDefault();
 
 			var label = $(this);
-			var option = $(this).closest('.dbl-option-container');
 
 			if (label.hasClass('label-right')) {
 				self.setSide('right');
@@ -87,8 +91,8 @@ $.fn.dblOption.defaults = {
   width: '220px',
   height: '30px',
   initSide: 'right',
-  leftLabel: 'OPÇÃO 1',
-  rightLabel: 'OPÇÃO 2',
+  leftLabel: 'OPTION 1',
+  rightLabel: 'OPTION 2',
   callOnInit: true,
   bgSelector: '#363b44',
   animation: true,
@@ -110,7 +114,7 @@ $.fn.setSide = function(side){
   	side = side.toLowerCase();
   	self.removeClass('right left');
   	self.addClass(side);
-    if (side == 'right' && self[0].dblOptions != 'right') {
+    if (side == 'right' && self[0].dblOptions.side != 'right') {
     	self[0].dblOptions.side = 'right';
     	self[0].dblOptions['onRight']()
   		self[0].dblOptions['onChange']()
@@ -136,6 +140,5 @@ $.fn.toggleSide = function() {
 
 $.fn.getSide = function() {
 	var self = $(this);
-
 	return self[0].dblOptions.side;
 }

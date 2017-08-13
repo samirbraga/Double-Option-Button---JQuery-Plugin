@@ -7,16 +7,16 @@ WIth it, you will can create a totally customizable double option button, dynami
 
 ## Appearance
 
-![Double Option - Appearance](images/Buntto%20Appearance.png)
+![Double Option - Appearance](images/Button%20Appearance.png)
 
 ## Options
 ```javascript
 $(".option-container").dblOption({
-  width: '200px',               // Always in pixels (default: '220px')
-  height: '30px',               // Also always in pixels (default: '30px')
+  width: '200px',               // Any unit, px, pt, em, rem, vw, %, etc (default: '220px')
+  height: '30px',               // Also any unit (default: '30px')
   initSide: 'left',             // Side selected in function initialization (default: 'right')
-  leftLabel: 'OPÇÃO 1',         // Label text of left side of the button (default: 'OPÇÃO 1')
-  rightLabel: 'OPÇÃO 2',        // Label text of right side of the button (default: 'OPÇÃO 2')
+  leftLabel: 'OPTION 1',         // Label text of left side of the button (default: 'OPTION 1')
+  rightLabel: 'OPTION 2',        // Label text of right side of the button (default: 'OPTION 2')
   callOnInit: true,             // Choose if the callback functions will be triggered on initialize function  (default: true)
   bgSelector: 'cornFlowerBlue', // Background of the slider selector  (default: '#363b44')
   animation: true,              // Control of animation (default: true)

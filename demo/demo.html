@@ -35,6 +35,10 @@
         Right
       </button>
     </div>
+    <hr style="margin: 30px 0; border: 0; height: 1px; background: rgba(0,0,0,.2)">
+    <button class="change">
+      MUDAR
+    </button>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="../src/dbl-option.js" ></script>
@@ -58,6 +62,10 @@
 
         $('.change-side').click(function(){
         	button.setSide($(this).data('side'));
+        });
+
+        $('.change').click(function(){
+        	$(".option-container").toggleSide();
         });
       });
     </script>

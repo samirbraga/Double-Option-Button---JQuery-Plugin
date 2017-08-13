@@ -20,7 +20,6 @@
 .dbl-option-container .labels {
   width: 100%;
   height: 100%;
-  font-size: 0;
   white-space: nowrap;
   line-height: inherit;
   cursor: pointer;
@@ -54,8 +53,9 @@
 }
 .dbl-option-container .labels.labels-front .labels-ranger {
   position: absolute;
+  width: 200%;
   background: #363b44;
-  height: inherit;;
+  height: inherit;
 }
 .dbl-option-container .labels.labels-front .labels-ranger.animated{
   transition: transform 0.2s ease-out, background 0.1s ease-in
@@ -63,7 +63,7 @@
 .dbl-option-container .labels .label {
   position: relative;
   display: inline-block;
-  width: 110px;
+  width: 50%;
   height: 100%;
   font-size: 10pt;
   line-height: inherit;
