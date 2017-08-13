@@ -2,7 +2,6 @@
 	 Created by Samir Chaves
    Git Repo https://github.com/samirbraga/Double-Option-Button---JQuery-Plugin/edit/master/README.md
 */
-
 $.fn.dblOption = function(opts){
 	var self = $(this);
 
