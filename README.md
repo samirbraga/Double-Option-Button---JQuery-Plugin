@@ -22,3 +22,5 @@ WIth it, you will can create a totally customizable double option button, dynami
       }
     })
     
+## Usage Example
+https://jsfiddle.net/SamirChaves/waq42Lu9/1/
