@@ -4,7 +4,11 @@ WIth it, you will can create a totally customizable double option button, dynami
 ## How to use
 
     $(".double-option").dblOption();
-    
+
+## Appearance
+
+![Double Option - Appearance](images/Buntto%20Appearance.png)
+
 ## Options
     $(".option-container").dblOption({
       width: '200px', // Always in pixels (default: '220px')
