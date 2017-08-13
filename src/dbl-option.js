@@ -22,7 +22,7 @@ $.fn.dblOption = function(opts){
   	width: opts['width'] || '220px',
   	height: opts['height'] || '30px',
   	lineHeight: opts['height'] || '30px'
-  })
+  });
 
   var template = [
   '<div class="labels labels-back">',
@@ -46,8 +46,9 @@ $.fn.dblOption = function(opts){
 
   self.append(template);
 
-  self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px')
-  self.find('.labels-ranger').css('background', opts['bgSelector'])
+  self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px');
+  self.find('.labels-ranger').css('background', opts['bgSelector']);
+
   if (opts['animation'] == true) {
   	self.find('.labels-ranger').addClass('animated');
     self.find('.labels-front').addClass('animated');
@@ -65,7 +66,6 @@ $.fn.dblOption = function(opts){
     e.preventDefault();
 
     var label = $(this);
-    var option = $(this).closest('.dbl-option-container');
 
     if (label.hasClass('label-right')) {
       self.setSide('right');

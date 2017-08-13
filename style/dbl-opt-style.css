@@ -46,10 +46,10 @@
 .dbl-option-container .labels.labels-front.animated{
   transition: transform 0.2s ease-out;
 }
-.dbl-option-container.left .labels.labels-front {
+.dbl-option-container.right .labels.labels-front {
   transform: translateX(100%);
 }
-.dbl-option-container.left .labels.labels-front .labels-ranger {
+.dbl-option-container.right .labels.labels-front .labels-ranger {
   transform: translateX(-50%);
 }
 .dbl-option-container .labels.labels-front .labels-ranger {
