@@ -19,6 +19,7 @@ $.fn.dblOption = function(opts){
 				self.setSide('left');
 			}
 		} else {
+
 			if (opts['initSide'] == 'left') {
 				self[0].dblOptions.side = 'left';
 			} else {
