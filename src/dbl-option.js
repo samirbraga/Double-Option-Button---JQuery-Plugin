@@ -6,8 +6,8 @@
 $.fn.dblOption = function(opts){
 	var self = $(this);
 
-  $.fn.dblOption.options = $.extend({}, $.fn.dblOption.defaults, opts);
-  opts = $.fn.dblOption.options;
+  self[0].dblOptions = $.extend({}, $.fn.dblOption.defaults, opts);
+  opts = self[0].dblOptions;
 
   self.addClass('dbl-option-container ' + opts['initSide']);
 
@@ -82,9 +82,9 @@ $.fn.dblOption = function(opts){
 }
 
 $.fn.dblOption.defaults = {
-  width: '200px',
+  width: '220px',
   height: '30px',
-  initSide: 'left',
+  initSide: 'right',
   leftLabel: 'OPÇÃO 1',
   rightLabel: 'OPÇÃO 2',
   callOnInit: true,
@@ -108,14 +108,32 @@ $.fn.setSide = function(side){
   	side = side.toLowerCase();
   	self.removeClass('right left');
   	self.addClass(side);
-    if (side == 'right' && $.fn.dblOption.options.side != 'right') {
-    	$.fn.dblOption.options.side = 'right';
-    	$.fn.dblOption.options['onRight']()
-  		$.fn.dblOption.options['onChange']()
-    } else if (side == 'left' && $.fn.dblOption.options.side != 'left') {
-    	$.fn.dblOption.options.side = 'left';
-    	$.fn.dblOption.options['onLeft']();
-      $.fn.dblOption.options['onChange']()
+    if (side == 'right' && self[0].dblOptions != 'right') {
+    	self[0].dblOptions.side = 'right';
+    	self[0].dblOptions['onRight']()
+  		self[0].dblOptions['onChange']()
+    } else if (side == 'left' && self[0].dblOptions.side != 'left') {
+    	self[0].dblOptions.side = 'left';
+    	self[0].dblOptions['onLeft']();
+      self[0].dblOptions['onChange']()
     }
   }
+}
+
+$.fn.toggleSide = function() {
+	var self = $(this);
+
+  if (self.hasClass('dbl-option-container')) {
+    if (self[0].dblOptions.side == 'right') {
+    	self.setSide('left');
+    } else if (self[0].dblOptions.side == 'left') {
+    	self.setSide('right');
+    }
+  }
+}
+
+$.fn.getSide = function() {
+	var self = $(this);
+
+	return self[0].dblOptions.side;
 }
