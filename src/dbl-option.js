@@ -99,10 +99,8 @@ $.fn.dblOption.defaults = {
   onChange: function () {
   },
   onRight: function () {
-    console.log('right');
   },
   onLeft: function () {
-    console.log('left');
   }
 }
 
