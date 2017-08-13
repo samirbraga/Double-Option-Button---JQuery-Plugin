@@ -1,4 +1,5 @@
-/* Created by Samir Chaves
+/*
+	 Created by Samir Chaves
    Git Repo https://github.com/samirbraga/Double-Option-Button---JQuery-Plugin/edit/master/README.md
 */
 
@@ -7,6 +8,13 @@ $.fn.dblOption = function(opts){
 
   self.addClass('dbl-option-container ' + (opts['initSide'] || "right"));
 
+  if (opts['callOnInit'] == true || opts['callOnInit'] == undefined) {
+    if ((opts['initSide'] || "right") == 'right') {
+			if (opts['onRight'] && opts['onRight'] instanceof Function) opts['onRight']();
+    } else {
+			if (opts['onLeft'] && opts['onLeft'] instanceof Function) opts['onLeft']();
+    }
+  }
 
   self.css({
   	width: opts['width'] || '220px',
@@ -46,8 +54,8 @@ $.fn.dblOption = function(opts){
     return false;
   })
 
-  self.find('.label-right span').text((opts['rightLabel'] || 'OPÇÃO 1'));
-  self.find('.label-left span').text((opts['leftLabel'] || 'OPÇÃO 2'));
+  self.find('.label-right span').text((opts['rightLabel'] || ''));
+  self.find('.label-left span').text((opts['leftLabel'] || ''));
 
   var toggleOption = function(e){
     e.preventDefault();
@@ -56,15 +64,14 @@ $.fn.dblOption = function(opts){
     var option = $(this).closest('.dbl-option-container');
 
     if (self.hasClass('label-right')) {
-      option.removeClass('right');
-      option.addClass('left');
-      if (opts['onRight'] && opts['onRight'] instanceof Function) opts['onRight']();
-    } else {
-      option.removeClass('left');
-      option.addClass('right');
+      option.removeClass('right')
+      			.addClass('left');
       if (opts['onLeft'] && opts['onLeft'] instanceof Function) opts['onLeft']();
+    } else {
+      option.removeClass('left')
+      			.addClass('right');
+      if (opts['onRight'] && opts['onRight'] instanceof Function) opts['onRight']();
     }
-
     return false;
   }
 

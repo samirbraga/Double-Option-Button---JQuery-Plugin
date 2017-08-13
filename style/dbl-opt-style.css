@@ -1,3 +1,12 @@
+/*
+	 Created by Samir Chaves
+   Git Repo https://github.com/samirbraga/Double-Option-Button---JQuery-Plugin/edit/master/README.md
+*/
+
+.dbl-option-label{
+  vertical-align: middle;
+  display: inline-block;
+}
 .dbl-option-container {
   vertical-align: middle;
   display: inline-block;
@@ -19,7 +28,7 @@
 .dbl-option-container .labels.labels-back {
   position: absolute;
   z-index: 0;
-  background: #ffffff;
+  background: transparent;
   color: #a6abb5;
   line-height: inherit;
 }
