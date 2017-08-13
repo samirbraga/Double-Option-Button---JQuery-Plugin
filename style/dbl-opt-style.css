@@ -1,0 +1,62 @@
+.dbl-option-container {
+  vertical-align: middle;
+  display: inline-block;
+  width: 220px;
+  height: 30px;
+  line-height: 30px;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.dbl-option-container .labels {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  white-space: nowrap;
+  line-height: inherit;
+  cursor: pointer;
+}
+.dbl-option-container .labels.labels-back {
+  position: absolute;
+  z-index: 0;
+  background: #ffffff;
+  color: #a6abb5;
+  line-height: inherit;
+}
+.dbl-option-container .labels.labels-back .label:hover{
+  color: #6a6f7a;
+}
+.dbl-option-container .labels.labels-front {
+  z-index: 10;
+  width: inherit;
+  color: #ffffff;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.dbl-option-container .labels.labels-front.animated{
+  transition: transform 0.2s ease-out;
+}
+.dbl-option-container.left .labels.labels-front {
+  transform: translateX(100%);
+}
+.dbl-option-container.left .labels.labels-front .labels-ranger {
+  transform: translateX(-50%);
+}
+.dbl-option-container .labels.labels-front .labels-ranger {
+  position: absolute;
+  background: #363b44;
+  height: inherit;;
+}
+.dbl-option-container .labels.labels-front .labels-ranger.animated{
+  transition: transform 0.2s ease-out, background 0.1s ease-in
+}
+.dbl-option-container .labels .label {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 100%;
+  font-size: 10pt;
+  line-height: inherit;
+  text-align: center;
+}
