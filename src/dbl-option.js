@@ -2,6 +2,7 @@
 	 Created by Samir Chaves
    Git Repo https://github.com/samirbraga/Double-Option-Button---JQuery-Plugin/edit/master/README.md
 */
+
 $.fn.dblOption = function(opts){
 	var self = $(this);
 
@@ -12,8 +13,10 @@ $.fn.dblOption = function(opts){
 
   if (opts['callOnInit'] == true) {
     if (opts['initSide'] == 'right') {
+    	$.fn.dblOption.options.side = 'right';
 			opts['onRight']();
     } else {
+    	$.fn.dblOption.options.side = 'left';
 			opts['onLeft']();
     }
   }
@@ -22,7 +25,7 @@ $.fn.dblOption = function(opts){
   	width: opts['width'] || '220px',
   	height: opts['height'] || '30px',
   	lineHeight: opts['height'] || '30px'
-  });
+  })
 
   var template = [
   '<div class="labels labels-back">',
@@ -46,9 +49,8 @@ $.fn.dblOption = function(opts){
 
   self.append(template);
 
-  self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px');
-  self.find('.labels-ranger').css('background', opts['bgSelector']);
-
+  self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px')
+  self.find('.labels-ranger').css('background', opts['bgSelector'])
   if (opts['animation'] == true) {
   	self.find('.labels-ranger').addClass('animated');
     self.find('.labels-front').addClass('animated');
@@ -66,6 +68,7 @@ $.fn.dblOption = function(opts){
     e.preventDefault();
 
     var label = $(this);
+    var option = $(this).closest('.dbl-option-container');
 
     if (label.hasClass('label-right')) {
       self.setSide('right');
@@ -101,15 +104,18 @@ $.fn.setSide = function(side){
 	var self = $(this);
 
   if (self.hasClass('dbl-option-container') && !!side) {
-  	$.fn.dblOption.options['onChange']()
 
   	side = side.toLowerCase();
   	self.removeClass('right left');
   	self.addClass(side);
-    if (side == 'right') {
+    if (side == 'right' && $.fn.dblOption.options.side != 'right') {
+    	$.fn.dblOption.options.side = 'right';
     	$.fn.dblOption.options['onRight']()
-    } else {
+  		$.fn.dblOption.options['onChange']()
+    } else if (side == 'left' && $.fn.dblOption.options.side != 'left') {
+    	$.fn.dblOption.options.side = 'left';
     	$.fn.dblOption.options['onLeft']();
+      $.fn.dblOption.options['onChange']()
     }
   }
 }
