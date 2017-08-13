@@ -4,81 +4,83 @@
 */
 
 $.fn.dblOption = function(opts){
-	var self = $(this);
+	$(this).each(function(){
+		var self = $(this);
 
-  self[0].dblOptions = $.extend({}, $.fn.dblOption.defaults, opts);
-  opts = self[0].dblOptions;
+		self[0].dblOptions = $.extend({}, $.fn.dblOption.defaults, opts);
+		opts = self[0].dblOptions;
 
-  self.addClass('dbl-option-container ' + opts['initSide']);
+		self.addClass('dbl-option-container ' + opts['initSide']);
 
-  if (opts['callOnInit'] == true) {
-    if (opts['initSide'] == 'right') {
-    	$.fn.dblOption.options.side = 'right';
-			opts['onRight']();
-    } else {
-    	$.fn.dblOption.options.side = 'left';
-			opts['onLeft']();
-    }
-  }
+		if (opts['callOnInit'] == true) {
+			if (opts['initSide'] == 'right') {
+				self[0].dblOptions.side = 'right';
+				opts['onRight']();
+			} else {
+				self[0].dblOptions.side = 'left';
+				opts['onLeft']();
+			}
+		}
 
-  self.css({
-  	width: opts['width'] || '220px',
-  	height: opts['height'] || '30px',
-  	lineHeight: opts['height'] || '30px'
-  })
+		self.css({
+			width: opts['width'] || '220px',
+			height: opts['height'] || '30px',
+			lineHeight: opts['height'] || '30px'
+		})
 
-  var template = [
-  '<div class="labels labels-back">',
-    '<div class="label label-left">',
-      '<span></span>',
-    '</div>',
-    '<div class="label label-right">',
-      '<span>RENTTALLER</span>',
-    '</div>',
-  '</div>',
-  '<div class="labels labels-front">',
-    '<div class="labels-ranger">',
-      '<div class="label label-left">',
-       ' <span>RENTTER</span>',
-      '</div>',
-      '<div class="label label-right">',
-        '<span>RENTTALLER</span>',
-      '</div>',
-    '</div>',
-  '</div>'].join('');
+		var template = [
+			'<div class="labels labels-back">',
+				'<div class="label label-left">',
+					'<span></span>',
+				'</div>',
+				'<div class="label label-right">',
+					'<span>RENTTALLER</span>',
+				'</div>',
+			'</div>',
+			'<div class="labels labels-front">',
+				'<div class="labels-ranger">',
+					'<div class="label label-left">',
+						' <span>RENTTER</span>',
+					'</div>',
+					'<div class="label label-right">',
+						'<span>RENTTALLER</span>',
+					'</div>',
+				'</div>',
+			'</div>'].join('');
 
-  self.append(template);
+		self.append(template);
 
-  self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px')
-  self.find('.labels-ranger').css('background', opts['bgSelector'])
-  if (opts['animation'] == true) {
-  	self.find('.labels-ranger').addClass('animated');
-    self.find('.labels-front').addClass('animated');
-  }
+		self.find('.labels .label').css('width', parseFloat(opts['width'])/2 + 'px')
+		self.find('.labels-ranger').css('background', opts['bgSelector'])
+		if (opts['animation'] == true) {
+			self.find('.labels-ranger').addClass('animated');
+			self.find('.labels-front').addClass('animated');
+		}
 
-  self.mousedown(function(e){
-    e.preventDefault();
-    return false;
-  })
+		self.mousedown(function(e){
+			e.preventDefault();
+			return false;
+		})
 
-  self.find('.label-right span').text(opts['rightLabel']);
-  self.find('.label-left span').text(opts['leftLabel']);
+		self.find('.label-right span').text(opts['rightLabel']);
+		self.find('.label-left span').text(opts['leftLabel']);
 
-  var toggleOption = function(e){
-    e.preventDefault();
+		var toggleOption = function(e){
+			e.preventDefault();
 
-    var label = $(this);
-    var option = $(this).closest('.dbl-option-container');
+			var label = $(this);
+			var option = $(this).closest('.dbl-option-container');
 
-    if (label.hasClass('label-right')) {
-      self.setSide('right');
-    } else {
-      self.setSide('left');
-    }
-    return false;
-  }
+			if (label.hasClass('label-right')) {
+				self.setSide('right');
+			} else {
+				self.setSide('left');
+			}
+			return false;
+		}
 
-  self.find('.labels-back .label').click(toggleOption);
+		self.find('.labels-back .label').click(toggleOption);
+	})
 }
 
 $.fn.dblOption.defaults = {

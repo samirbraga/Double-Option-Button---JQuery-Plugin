@@ -31,9 +31,20 @@ $(".option-container").dblOption({
   }
 })
 ```
+
 ## Set Side Dynamically
 ```javascript
 $('.option-button').setSide('right') // or 'left';
+```
+
+### Toggle Side
+```javascript
+$('.option-button').toggleSide();
+```
+
+### Get Side
+```javascript
+$('.option-button').getSide() // return or 'left' or 'right';
 ```
 
 ## Usage Example

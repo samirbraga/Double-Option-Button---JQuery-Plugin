@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Double Option Button - JQuery Plugin</title>
+    <link rel="stylesheet" href="../style/dbl-opt-style.css">
+    <style media="screen">
+      body {
+        background: #ffffff;
+        font-family: sans-serif;
+        padding: 40px;
+      }
+      body.theme-1{
+        background: #e3e4e5
+      }
+      body.theme-2{
+        background: #ffffff;
+      }
+      .inline {
+        vertical-align: middle;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="dbl-option-label inline">Choose the page theme: &nbsp;</span>
+    <div class="option-container inline"></div>
+    <hr style="margin: 30px 0; border: 0; height: 1px; background: rgba(0,0,0,.2)">
+    <div class="dbl-option-label">
+      <span class="inline">Dynamically selectable side: &nbsp;</span>
+      <button class="change-side inline" data-side='left'>
+        Left
+      </button>
+      <button class="change-side inline" data-side='right'>
+        Right
+      </button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="../src/dbl-option.js" ></script>
+    <script>
+      $(document).ready(function(){
+        var button = $(".option-container");
+
+        button.dblOption({
+        	leftLabel: 'THEME 1',
+        	rightLabel: 'THEME 2',
+          initSide: 'right',
+          onRight: function () {
+            $('body').removeClass('theme-1')
+            				 .addClass('theme-2');
+          },
+          onLeft: function () {
+            $('body').removeClass('theme-2')
+            				 .addClass('theme-1');
+          }
+        });
+
+        $('.change-side').click(function(){
+        	button.setSide($(this).data('side'));
+        });
+      });
+    </script>
+  </body>
+</html>
